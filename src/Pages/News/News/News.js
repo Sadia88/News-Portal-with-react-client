@@ -5,10 +5,12 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
 import {  BsFillBookmarkFill ,BsFillShareFill,BsStarFill,BsEyeFill} from "react-icons/bs";
+import useTitle from '../../../hooks/useTitle';
 
 
 const News = () => {
     const news=useLoaderData()
+    useTitle('News')
     const {_id,title,details,image_url,total_view,author,rating }=news
     console.log(news)
     return (

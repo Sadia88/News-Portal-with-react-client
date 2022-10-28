@@ -6,8 +6,11 @@ import { Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const Register = () => {
+
+    useTitle('Register')
     const [error,setError]=useState('')
     const [accept,setAccept]=useState(false)
 const {CreateUser,updateUserProfile,verifyEmail}=useContext(AuthContext)
@@ -91,18 +94,12 @@ const handleVerification=()=>{
             <Form.Label>Password</Form.Label>
             <Form.Control name="password" type="password" placeholder="Password" required />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check 
-        onClick={handleAcceptTerms}
-         type="checkbox" 
-         label={<>Accept <Link to='/terms'>Terms and Conditions</Link></>} />
-      </Form.Group>
+       
+    
         <Button variant="primary" type="submit" disabled={!accept}>
             Register
         </Button>
-        <Form.Text className="text-danger">
-            {error}
-        </Form.Text>
+        
     </Form>
     );
 };
